@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Voppname:</strong>
+  <%= @vopportunity.voppname %>
+</p>
+
+<p>
+  <strong>Vopplogo:</strong>
+  <%= @vopportunity.vopplogo %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @vopportunity.title %>
+</p>
+
+<p>
+  <strong>Shortdescr:</strong>
+  <%= @vopportunity.shortdescr %>
+</p>
+
+<p>
+  <strong>Vorganization:</strong>
+  <%= @vopportunity.vorganization_id %>
+</p>
+
+<%= link_to 'Edit', edit_vopportunity_path(@vopportunity) %> |
+<%= link_to 'Back', vopportunities_path %>

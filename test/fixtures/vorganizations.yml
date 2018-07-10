@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vorgname: MyString
+  website: MyString
+  vorglogo: MyString
+  shortdescr: MyString
+  vorgtype: MyString
+  city: MyString
+  province: MyString
+  country: MyString
+  handles: MyString
+
+two:
+  vorgname: MyString
+  website: MyString
+  vorglogo: MyString
+  shortdescr: MyString
+  vorgtype: MyString
+  city: MyString
+  province: MyString
+  country: MyString
+  handles: MyString

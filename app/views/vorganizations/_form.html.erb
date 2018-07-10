@@ -1,0 +1,62 @@
+<%= form_with(model: vorganization, local: true) do |form| %>
+  <% if vorganization.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vorganization.errors.count, "error") %> prohibited this vorganization from being saved:</h2>
+
+      <ul>
+      <% vorganization.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :vorgname %>
+    <%= form.text_field :vorgname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :website %>
+    <%= form.text_field :website %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vorglogo %>
+    <%= form.text_field :vorglogo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shortdescr %>
+    <%= form.text_field :shortdescr %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vorgtype %>
+    <%= form.text_field :vorgtype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :province %>
+    <%= form.text_field :province %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :handles %>
+    <%= form.text_field :handles %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

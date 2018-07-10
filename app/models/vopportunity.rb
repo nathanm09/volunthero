@@ -1,0 +1,2 @@
+class Vopportunity < ApplicationRecord
+end

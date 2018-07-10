@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Volunteer Opportunities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Voppname</th>
+      <th>Vopplogo</th>
+      <th>Title</th>
+      <th>Shortdescr</th>
+      <th>Vorganization</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vopportunities.each do |vopportunity| %>
+      <tr>
+        <td><%= vopportunity.voppname %></td>
+        <td><%= vopportunity.vopplogo %></td>
+        <td><%= vopportunity.title %></td>
+        <td><%= vopportunity.shortdescr %></td>
+        <td><%= vopportunity.vorganization_id %></td>
+        <td><%= link_to 'Show', vopportunity %></td>
+        <td><%= link_to 'Edit', edit_vopportunity_path(vopportunity) %></td>
+        <td><%= link_to 'Destroy', vopportunity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vopportunity', new_vopportunity_path %>
+
+<br>
+
+<a href='..'>Back Home</a>

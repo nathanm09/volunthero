@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vorganizations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vorgname</th>
+      <th>Website</th>
+      <th>Vorglogo</th>
+      <th>Shortdescr</th>
+      <th>Vorgtype</th>
+      <th>City</th>
+      <th>Province</th>
+      <th>Country</th>
+      <th>Handles</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vorganizations.each do |vorganization| %>
+      <tr>
+        <td><%= vorganization.vorgname %></td>
+        <td><%= vorganization.website %></td>
+        <td><%= vorganization.vorglogo %></td>
+        <td><%= vorganization.shortdescr %></td>
+        <td><%= vorganization.vorgtype %></td>
+        <td><%= vorganization.city %></td>
+        <td><%= vorganization.province %></td>
+        <td><%= vorganization.country %></td>
+        <td><%= vorganization.handles %></td>
+        <td><%= link_to 'Show', vorganization %></td>
+        <td><%= link_to 'Edit', edit_vorganization_path(vorganization) %></td>
+        <td><%= link_to 'Destroy', vorganization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vorganization', new_vorganization_path %>
+
+<br>
+
+<a href='..'>Back Home</a>

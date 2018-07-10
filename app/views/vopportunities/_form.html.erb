@@ -1,0 +1,42 @@
+<%= form_with(model: vopportunity, local: true) do |form| %>
+  <% if vopportunity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vopportunity.errors.count, "error") %> prohibited this vopportunity from being saved:</h2>
+
+      <ul>
+      <% vopportunity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :voppname %>
+    <%= form.text_field :voppname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vopplogo %>
+    <%= form.text_field :vopplogo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shortdescr %>
+    <%= form.text_field :shortdescr %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vorganization_id %>
+    <%= form.number_field :vorganization_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

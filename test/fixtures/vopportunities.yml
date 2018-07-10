@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  voppname: MyString
+  vopplogo: MyString
+  title: MyString
+  shortdescr: MyString
+  vorganization_id: 1
+
+two:
+  voppname: MyString
+  vopplogo: MyString
+  title: MyString
+  shortdescr: MyString
+  vorganization_id: 1

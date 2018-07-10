@@ -1,0 +1,2 @@
+module VopportunitiesHelper
+end
