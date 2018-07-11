@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Vorgname:</strong>
+  <strong>Open opportunities for </strong>
   <%= @vorganization.vorgname %>
 </p>
 
@@ -44,6 +44,11 @@
   <strong>Handles:</strong>
   <%= @vorganization.handles %>
 </p>
+
+
+<%= render 'showvopportunity', vorganization: @vorganization %>
+
+<%= render 'newvopportunity', vorganization: @vorganization %>
 
 <%= link_to 'Edit', edit_vorganization_path(@vorganization) %> |
 <%= link_to 'Back', vorganizations_path %>

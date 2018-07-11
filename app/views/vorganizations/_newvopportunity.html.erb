@@ -1,0 +1,33 @@
+<p><h1>Add an opportunity:</h1></p>
+
+<%= form_with(model: [ @vorganization, @vorganization.vopportunity.build ], local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :voppname %>
+    <%= form.text_field :voppname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vopplogo %>
+    <%= form.text_field :vopplogo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shortdescr %>
+    <%= form.text_field :shortdescr %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vorganization_id %>
+    <%= form.number_field :vorganization_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

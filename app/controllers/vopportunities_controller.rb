@@ -1,5 +1,6 @@
 class VopportunitiesController < ApplicationController
   before_action :set_vopportunity, only: [:show, :edit, :update, :destroy]
+  http_basic_authenticate_with name: "nathan", password: "tuxedo", only: [:create, :edit, :destroy]
 
   # GET /vopportunities
   # GET /vopportunities.json
@@ -24,17 +25,31 @@ class VopportunitiesController < ApplicationController
   # POST /vopportunities
   # POST /vopportunities.json
   def create
-    @vopportunity = Vopportunity.new(vopportunity_params)
+   @vorganization = Vorganization.find(params[:vorganization_id])
+   @vopportunity = @vorganization.vopportunity.create(vopportunity_params)
 
-    respond_to do |format|
+      respond_to do |format|
       if @vopportunity.save
-        format.html { redirect_to @vopportunity, notice: 'Vopportunity was successfully created.' }
+        format.html { redirect_to @vorganization, notice: 'Vopportunity was successfully created.' }
         format.json { render :show, status: :created, location: @vopportunity }
       else
         format.html { render :new }
         format.json { render json: @vopportunity.errors, status: :unprocessable_entity }
       end
     end
+      
+    #Original scaffolding code below  
+    # @vopportunity = Vopportunity.new(vopportunity_params)
+
+    #respond_to do |format|
+     # if @vopportunity.save
+      #  format.html { redirect_to @vopportunity, notice: 'Vopportunity was successfully created.' }
+       # format.json { render :show, status: :created, location: @vopportunity }
+      #else
+       # format.html { render :new }
+        #format.json { render json: @vopportunity.errors, status: :unprocessable_entity }
+      #end
+    #end
   end
 
   # PATCH/PUT /vopportunities/1

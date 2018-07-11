@@ -1,6 +1,7 @@
 class VorganizationsController < ApplicationController
   before_action :set_vorganization, only: [:show, :edit, :update, :destroy]
-
+  http_basic_authenticate_with name: "nathan", password: "tuxedo", except: [:index, :show]
+    
   # GET /vorganizations
   # GET /vorganizations.json
   def index
@@ -25,7 +26,7 @@ class VorganizationsController < ApplicationController
   # POST /vorganizations.json
   def create
     @vorganization = Vorganization.new(vorganization_params)
-
+    
     respond_to do |format|
       if @vorganization.save
         format.html { redirect_to @vorganization, notice: 'Vorganization was successfully created.' }
