@@ -1,0 +1,27 @@
+<%= form_with(model: vopportunity_enrolment, local: true) do |form| %>
+  <% if vopportunity_enrolment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vopportunity_enrolment.errors.count, "error") %> prohibited this vopportunity_enrolment from being saved:</h2>
+
+      <ul>
+      <% vopportunity_enrolment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :vhero_id %>
+    <%= form.number_field :vhero_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vopportunity_id %>
+    <%= form.number_field :vopportunity_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

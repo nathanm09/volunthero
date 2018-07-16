@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vopportunity Enrolments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vhero</th>
+      <th>Vopportunity</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vopportunity_enrolments.each do |vopportunity_enrolment| %>
+      <tr>
+        <td><%= vopportunity_enrolment.vhero_id %></td>
+        <td><%= vopportunity_enrolment.vopportunity_id %></td>
+        <td><%= link_to 'Show', vopportunity_enrolment %></td>
+        <td><%= link_to 'Edit', edit_vopportunity_enrolment_path(vopportunity_enrolment) %></td>
+        <td><%= link_to 'Destroy', vopportunity_enrolment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vopportunity Enrolment', new_vopportunity_enrolment_path %>

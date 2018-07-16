@@ -6,31 +6,18 @@
 
 <p>
     <h2>Current Opportunities</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Voppname</th>
-              <th>Vopplogo</th>
-              <th>Title</th>
-              <th>Shortdescr</th>
-              <th>Vorganization</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-
-          <tbody>
           <% @vopportunity = Vopportunity.all.includes(:vorganization) %>
           <% @vopportunity.each do |vopportunity| %>
-              <tr>
-                <td><%= vopportunity.voppname %></td>
-                <td><%= vopportunity.vopplogo %></td>
-                <td><%= vopportunity.title %></td>
-                <td><%= vopportunity.shortdescr %></td>
-                <td><%= vopportunity.vorganization_id %></td>
-              </tr>
-            <% end %>
-          </tbody>
+        <table frame="box">
+            <tr><td>Name: <%= vopportunity.voppname %></td></tr>
+            <tr><td>Logo: <%= vopportunity.vopplogo %></td></tr>
+            <tr><td>Title: <%= vopportunity.title %></td></tr>
+            <tr><td>Description: <%= vopportunity.shortdescr %></td></tr>
+            <tr><td>Organization: <%= vopportunity.vorganization_id %></td></tr>
         </table>
+        <br>
+            <% end %>
 </p>
 
 <p><%= link_to 'Organizations', controller: 'vorganizations'%></p>
+<p><%= link_to 'Voluntheros', controller:'vheros'%></p>

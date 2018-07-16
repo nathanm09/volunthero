@@ -1,0 +1,2 @@
+class VopportunityEnrolment < ApplicationRecord
+end

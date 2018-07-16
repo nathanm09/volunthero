@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :vopportunity_enrolments
+  resources :vheros
   resources :vorganizations do
     resources :vopportunities
   end

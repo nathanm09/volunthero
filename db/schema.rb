@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_10_204401) do
+ActiveRecord::Schema.define(version: 2018_07_16_182320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "vheros", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "password"
+    t.string "shortdescr"
+    t.string "jobtitle"
+    t.string "organization"
+    t.string "lastschool"
+    t.string "city"
+    t.string "province"
+    t.string "country"
+    t.string "handles"
+    t.string "interests"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "vopportunities", force: :cascade do |t|
     t.string "voppname"
@@ -21,6 +39,13 @@ ActiveRecord::Schema.define(version: 2018_07_10_204401) do
     t.string "title"
     t.string "shortdescr"
     t.integer "vorganization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vopportunity_enrolments", force: :cascade do |t|
+    t.integer "vhero_id"
+    t.integer "vopportunity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
