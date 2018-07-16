@@ -5,12 +5,13 @@ class VopportunitiesController < ApplicationController
   # GET /vopportunities
   # GET /vopportunities.json
   def index
-    @vopportunities = Vopportunity.all
+    @vopportunity = Vopportunity.all
   end
 
   # GET /vopportunities/1
   # GET /vopportunities/1.json
   def show
+      @vopportunity = Vopportunity.find(params[:id])
   end
 
   # GET /vopportunities/new

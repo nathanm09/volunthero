@@ -4,5 +4,33 @@
 
 <p>These are the current open opportunities:</p>
 
+<p>
+    <h2>Current Opportunities</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Voppname</th>
+              <th>Vopplogo</th>
+              <th>Title</th>
+              <th>Shortdescr</th>
+              <th>Vorganization</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+          <% @vopportunity = Vopportunity.all.includes(:vorganization) %>
+          <% @vopportunity.each do |vopportunity| %>
+              <tr>
+                <td><%= vopportunity.voppname %></td>
+                <td><%= vopportunity.vopplogo %></td>
+                <td><%= vopportunity.title %></td>
+                <td><%= vopportunity.shortdescr %></td>
+                <td><%= vopportunity.vorganization_id %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+</p>
 
 <p><%= link_to 'Organizations', controller: 'vorganizations'%></p>
