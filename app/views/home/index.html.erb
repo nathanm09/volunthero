@@ -6,14 +6,14 @@
 
 <p>
     <h2>Current Opportunities</h2>
-          <% @vopportunity = Vopportunity.all.includes(:vorganization) %>
+          <% @vopportunity = Vopportunity.joins(:vorganization) %>
           <% @vopportunity.each do |vopportunity| %>
         <table frame="box">
             <tr><td>Name: <%= vopportunity.voppname %></td></tr>
             <tr><td>Logo: <%= vopportunity.vopplogo %></td></tr>
             <tr><td>Title: <%= vopportunity.title %></td></tr>
             <tr><td>Description: <%= vopportunity.shortdescr %></td></tr>
-            <tr><td>Organization: <%= vopportunity.vorganization_id %></td></tr>
+            <tr><td>Organization: <%= vopportunity.vorganization.vorgname %></td></tr>
         </table>
         <br>
             <% end %>

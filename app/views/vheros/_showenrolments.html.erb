@@ -1,0 +1,15 @@
+<p>
+    <h2>Enroled Opportunities</h2>
+          <% @vheroenrolment = Vhero.select("*").joins("INNER JOIN vopportunity_enrolments on vheros.id = vopportunity_enrolments.vhero_id INNER JOIN vopportunities on vopportunity_enrolments.vopportunity_id = vopportunities.id INNER JOIN vorganizations on vorganizations.id = vopportunities.vorganization_id").where("vopportunity_enrolments.vhero_id = ?", params[:id]) %>
+          <% @vheroenrolment.each do |vheroenrolment| %>
+        <table frame="box">
+            <tr><td>Name: <%= vheroenrolment.voppname %></td></tr>
+            <tr><td>Name: <%= vheroenrolment.vopplogo %></td></tr>
+            <tr><td>Name: <%= vheroenrolment.title %></td></tr>
+            <tr><td>Name: <%= vheroenrolment.shortdescr %></td></tr>
+            <tr><td>Name: <%= vheroenrolment.vorgname %></td></tr>
+            <tr><td>Name: <%= vheroenrolment.created_at %></td></tr>
+        </table>
+        <br>
+            <% end %>
+</p>

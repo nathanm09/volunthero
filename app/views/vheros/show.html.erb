@@ -64,6 +64,7 @@
   <strong>Interests:</strong>
   <%= @vhero.interests %>
 </p>
+<%= render 'showenrolments', vhero: @vhero %>
 
 <%= link_to 'Edit', edit_vhero_path(@vhero) %> |
 <%= link_to 'Back', vheros_path %>
