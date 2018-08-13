@@ -24,7 +24,10 @@ class VopportunityEnrolmentsController < ApplicationController
   # POST /vopportunity_enrolments
   # POST /vopportunity_enrolments.json
   def create
-    @vopportunity_enrolment = VopportunityEnrolment.new(vopportunity_enrolment_params)
+    #Old scaffold code
+    # @vopportunity_enrolment = VopportunityEnrolment.new(vopportunity_enrolment_params)
+      
+    @vopportunity_enrolment = VopportunityEnrolment.new(vhero_id: @vhero.id, vopportunity_id: @vopportunity.id)
 
     respond_to do |format|
       if @vopportunity_enrolment.save

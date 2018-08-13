@@ -10,6 +10,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%# ----- Flash message header start----- %>
+	
+	<% if notice %>
+      	    <%= notice %>
+	<% end %>
+	
+	<% if alert %>
+      	    <%= alert %>
+	<% end %>
+	
+	<%# ----- Flash message header end----- %>
+      
+      <%= yield %>
+      
+
   </body>
 </html>

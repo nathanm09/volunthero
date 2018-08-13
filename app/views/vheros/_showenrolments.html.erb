@@ -1,14 +1,27 @@
 <p>
     <h2>Enroled Opportunities</h2>
-          <% @vheroenrolment = Vhero.select("*").joins("INNER JOIN vopportunity_enrolments on vheros.id = vopportunity_enrolments.vhero_id INNER JOIN vopportunities on vopportunity_enrolments.vopportunity_id = vopportunities.id INNER JOIN vorganizations on vorganizations.id = vopportunities.vorganization_id").where("vopportunity_enrolments.vhero_id = ?", params[:id]) %>
-          <% @vheroenrolment.each do |vheroenrolment| %>
+</p>
+<p>
+    <% @vhero.vopportunities.each do |vheroenrolment| %>
         <table frame="box">
-            <tr><td>Name: <%= vheroenrolment.voppname %></td></tr>
-            <tr><td>Name: <%= vheroenrolment.vopplogo %></td></tr>
-            <tr><td>Name: <%= vheroenrolment.title %></td></tr>
-            <tr><td>Name: <%= vheroenrolment.shortdescr %></td></tr>
-            <tr><td>Name: <%= vheroenrolment.vorgname %></td></tr>
-            <tr><td>Name: <%= vheroenrolment.created_at %></td></tr>
+            <tr><td>Name: <%= link_to vheroenrolment.voppname, vopportunity_path(vheroenrolment) %></td></tr>
+            <tr><td>Logo: <%= vheroenrolment.vopplogo %></td></tr>
+            <tr><td>Title: <%= vheroenrolment.title %></td></tr>
+            <tr><td>Description: <%= vheroenrolment.shortdescr %></td></tr>
+            <tr><td>OrgName: <%= vheroenrolment.vorganization.vorgname %></td></tr>
+        </table>
+    <% end %>
+</p>
+<p>
+    <h2>Current Opportunities</h2>
+          <% @vopportunity = Vopportunity.not_enroled %>
+          <% @vopportunity.each do |vopportunity| %>
+        <table frame="box">
+            <tr><td>Name: <%= link_to vopportunity.voppname, vopportunity_path(vopportunity) %></td></tr>
+            <tr><td>Logo: <%= vopportunity.vopplogo %></td></tr>
+            <tr><td>Title: <%= vopportunity.title %></td></tr>
+            <tr><td>Description: <%= vopportunity.shortdescr %></td></tr>
+            <tr><td>Organization: <%= vopportunity.vorganization.vorgname %></td></tr>
         </table>
         <br>
             <% end %>
