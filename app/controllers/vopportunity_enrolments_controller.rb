@@ -1,5 +1,5 @@
 class VopportunityEnrolmentsController < ApplicationController
-  before_action :set_vopportunity_enrolment, only: [:show, :edit, :update, :destroy]
+  before_action :set_vopportunity, only: [:create]
 
   # GET /vopportunity_enrolments
   # GET /vopportunity_enrolments.json
@@ -25,19 +25,32 @@ class VopportunityEnrolmentsController < ApplicationController
   # POST /vopportunity_enrolments.json
   def create
     #Old scaffold code
-    # @vopportunity_enrolment = VopportunityEnrolment.new(vopportunity_enrolment_params)
+    # @vopportunity_enrolment = VopportunityEnrolment.new(vopportunity_enrolment_params)  
+    #@vopportunity = Vopportunity.find(params[:vopportunity_id])
+    #@vopportunity_enrolment = VopportunityEnrolment.new(vhero_id: current_user.id, vopportunity_id: @vopportunity.id)
+    
+    @vopportunity_enrolment = @vopportunity.vopportunity_enrolments.build
+    @vopportunity_enrolment.vhero_id = current_user.id
       
-    @vopportunity_enrolment = VopportunityEnrolment.new(vhero_id: @vhero.id, vopportunity_id: @vopportunity.id)
-
     respond_to do |format|
-      if @vopportunity_enrolment.save
-        format.html { redirect_to @vopportunity_enrolment, notice: 'Vopportunity enrolment was successfully created.' }
-        format.json { render :show, status: :created, location: @vopportunity_enrolment }
-      else
-        format.html { render :new }
-        format.json { render json: @vopportunity_enrolment.errors, status: :unprocessable_entity }
-      end
+        if @vopportunity_enrolment.update(vopportunity_enrolment_params)
+          format.html { redirect_to @vopportunity, notice: 'Vopportunity enrolment was successfully created.' }
+            format.json { render :show, status: :created, location: @vopportunity }
+          else
+            format.html { render :new }
+            format.json { render json: @vopportunity_enrolment.errors, status: :unprocessable_entity }
+        end
     end
+
+    #respond_to do |format|
+     # if @vopportunity_enrolment.save
+      #  format.html { redirect_to @vopportunity_enrolment, notice: 'Vopportunity enrolment was successfully created.' }
+       # format.json { render :show, status: :created, location: @vopportunity_enrolment }
+      #else
+        #format.html { render :new }
+        #format.json { render json: @vopportunity_enrolment.errors, status: :unprocessable_entity }
+      #end
+    #end
   end
 
   # PATCH/PUT /vopportunity_enrolments/1
@@ -72,6 +85,10 @@ class VopportunityEnrolmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vopportunity_enrolment_params
-      params.require(:vopportunity_enrolment).permit(:vhero_id, :vopportunity_id)
+      params.permit(:vopportunity_enrolment).permit(:vhero_id, :vopportunity_id)
+    end
+    
+    def set_vopportunity
+        @vopportunity = Vopportunity.find(params[:vopportunity_id])
     end
 end

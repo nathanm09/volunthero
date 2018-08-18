@@ -1,5 +1,6 @@
 class VherosController < ApplicationController
   before_action :set_vhero, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, only: [:edit, :update, :destroy]
 
   # GET /vheros
   # GET /vheros.json
@@ -26,6 +27,8 @@ class VherosController < ApplicationController
   # POST /vheros.json
   def create
     @vhero = Vhero.new(vhero_params)
+      
+    @vhero.email.downcase!
 
     respond_to do |format|
       if @vhero.save
@@ -33,7 +36,10 @@ class VherosController < ApplicationController
         format.json { render :show, status: :created, location: @vhero }
       else
         format.html { render :new }
-        format.json { render json: @vhero.errors, status: :unprocessable_entity }
+        flash.now.alert = "Oops, couldn't create account. Please make sure you are using a valid email and password and try again."
+        render :new
+        # Removed from scaffold code  
+        # format.json { render json: @vhero.errors, status: :unprocessable_entity }
       end
     end
   end

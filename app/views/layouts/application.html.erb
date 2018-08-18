@@ -22,6 +22,20 @@
 	
 	<%# ----- Flash message header end----- %>
       
+    <%# ----- Start current user ----- %>
+	
+    <p align='right'>
+    <% if current_user %>
+      <!-- current_user will return true if a user is logged in -->
+      <%= "Hello #{current_user.firstname} #{current_user.lastname}" %> | <%= link_to 'Home', root_path %> | <%= link_to 'Log Out', logout_path, method: :delete %>
+    <% else %>
+      <!-- not logged in -->
+      <%= link_to 'Home', root_path %> | <%= link_to 'Log In', login_path %> or <%= link_to 'Sign Up', new_vhero_path %>
+    <% end %>
+    <hr>
+	</p>
+    <%# ----- End current user ----- %>
+      
       <%= yield %>
       
 
