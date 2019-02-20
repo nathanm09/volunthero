@@ -1,6 +1,114 @@
-<h1>Editing Vhero</h1>
+<main class="page-content">  
+        <!-- Breadcrumbs & Page title-->
+        <section class="text-center section-34 section-sm-60 section-md-top-100 section-md-bottom-105 bg-image bg-breadcrumbs-01">
+          <div class="shell shell-fluid">
+            <div class="range range-condensed">
+              <div class="cell-xs-12 cell-xl-preffix-1 cell-xl-11">
+                <p class="h3 text-white">Become a Volunthero</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="bg-white text-center section-50 section-sm-bottom-100">
+          <div class="shell">
+            <div class="range range-xs-center offset-top-15">
+              <div class="cell-sm-10 cell-md-8">
+                <div class="inset-lg-left-50 inset-lg-right-50">
+                  <!-- RD Mailform-->
+                    <%= form_with(model: @vhero, local: true) do |form| %>
 
-<%= render 'form', vhero: @vhero %>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :firstname %></label><br>
+                        <%= form.text_field :firstname, autofocus: true, class: "form-control" %>
+                      </div>
+                      <div class="form-group">
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :lastname %></label><br>
+                        <%= form.text_field :lastname, class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :city %></label><br>
+                        <%= form.text_field :city, autofocus: true, class: "form-control" %>
+                      </div>
+                      <div class="form-group">
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :province %></label><br>
+                        <%= form.text_field :province, class: "form-control" %>
+                      </div>
+                      <div class="form-group">
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :country %></label><br>
+                        <%= form.text_field :country, class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :email %></label><br>
+                        <%= form.text_field :email, autofocus: true, class: "form-control" %>
+                      </div>
+                      <div class="form-group">
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :password %></label><br>
+                        <%= form.password_field :password, class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :profile_pic %></label><br>
+                        <%= form.text_field :profile_pic, class: "form-control" %>
+                      </div>
+                      <div class="form-group">
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :password_confirmation %></label><br>
+                        <%= form.password_field :password_confirmation, class: "form-control" %>
+                      </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :jobtitle %></label><br>
+                        <%= form.text_field :jobtitle, autofocus: true, class: "form-control" %>
+                      </div>
+                      <div class="form-group">
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :organization %></label><br>
+                        <%= form.text_field :organization, class: "form-control" %>
+                      </div>
+                    </div>
+                    <div class="form-group offset-top-15">
+                      <label for="message" class="form-label form-label-outside">
+                      <%= form.label :shortdescr %></label><br>
+                      <%= form.text_area :shortdescr, class: "form-control" %> 
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :handles %></label><br>
+                        <%= form.text_field :handles, autofocus: true, class: "form-control" %>
+                      </div>
+                      <div class="form-group">
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :interests %></label><br>
+                        <%= form.text_field :interests, class: "form-control" %>
+                      </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="offset-top-15">
+                      <div class="form-inline-flex">
+                        <div class="form-group">
+                          <%= form.submit "Submit", class: "btn btn-burnt-sienna btn-fullwidth btn-shadow" %>
+                          <!--<button type="submit" class="btn btn-burnt-sienna btn-fullwidth">Send message</button>-->
+                        </div>
+                        <% end %>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+</main>
 
-<%= link_to 'Show', @vhero %> |
 <%= link_to 'Back', vheros_path %>

@@ -13,17 +13,21 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'    
     
-	# ----- Start login/logout functionality-----
+	# -----New Vhero Functionality-----
 	
-	# log in page with form:
-	get '/login'     => 'sessions#new'
-	
-	# create (post) action for when log in form is submitted:
-	post '/login'    => 'sessions#create'
-	
-	# delete action to log out:
-	delete '/logout' => 'sessions#destroy'  
-  	
-  	# ----- end login/logout functionality -----
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    # We can use users#new for now, or replace this with the controller and action you want to be the site root:
+	root to: 'vheros#new'
+	# sign up page with form:
+	#get 'vheros/new' => 'vheros#new', :as => :new_vhero   
+    # create (post) action for when sign up form is submitted:
+	post 'vheros' => 'vheros#create'
+  	# ----- End Vhero Functionality-----
+    
+      # ---- Login/Logout Routes ----
+      get '/login'     => 'sessions#new'
+      # create (post) action for when log in form is submitted:
+      post '/login'    => 'sessions#create'
+      # delete action to log out:
+      delete '/logout' => 'sessions#destroy'  
+
 end

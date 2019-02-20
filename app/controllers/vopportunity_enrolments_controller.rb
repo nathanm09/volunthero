@@ -34,7 +34,7 @@ class VopportunityEnrolmentsController < ApplicationController
       
     respond_to do |format|
         if @vopportunity_enrolment.update(vopportunity_enrolment_params)
-          format.html { redirect_to @vopportunity, notice: 'Vopportunity enrolment was successfully created.' }
+          format.html { redirect_to @vopportunity, notice: 'Congratulations! You have successfully enrolled!' }
             format.json { render :show, status: :created, location: @vopportunity }
           else
             format.html { render :new }
@@ -57,8 +57,8 @@ class VopportunityEnrolmentsController < ApplicationController
   # PATCH/PUT /vopportunity_enrolments/1.json
   def update
     respond_to do |format|
-      if @vopportunity_enrolment.update(vopportunity_enrolment_params)
-        format.html { redirect_to @vopportunity_enrolment, notice: 'Vopportunity enrolment was successfully updated.' }
+      if @vopportunity_enrolment.save(vopportunity_enrolment_params)
+        format.html { redirect_to @vopportunity_enrolment, notice: 'Enrolled! Congratulations!' }
         format.json { render :show, status: :ok, location: @vopportunity_enrolment }
       else
         format.html { render :edit }
@@ -70,9 +70,10 @@ class VopportunityEnrolmentsController < ApplicationController
   # DELETE /vopportunity_enrolments/1
   # DELETE /vopportunity_enrolments/1.json
   def destroy
+    @vopportunity_enrolment = VopportunityEnrolment.find_by(vhero_id: params[:vhero_id], vopportunity_id: params[:id])
     @vopportunity_enrolment.destroy
     respond_to do |format|
-      format.html { redirect_to vopportunity_enrolments_url, notice: 'Vopportunity enrolment was successfully destroyed.' }
+      format.html { redirect_to vopportunity_path, notice: 'Enrollment was successfully cancelled.' }
       format.json { head :no_content }
     end
   end

@@ -1,11 +1,11 @@
 class VopportunitiesController < ApplicationController
   before_action :set_vopportunity, only: [:show, :edit, :update, :destroy]
-  http_basic_authenticate_with name: "nathan", password: "tuxedo", only: [:create, :edit, :destroy]
+  #http_basic_authenticate_with name: "nathan", password: "tuxedo", only: [:create, :edit, :destroy]
 
   # GET /vopportunities
   # GET /vopportunities.json
   def index
-    @vopportunity = Vopportunity.all
+    @vopportunities = Vopportunity.all
   end
 
   # GET /vopportunities/1

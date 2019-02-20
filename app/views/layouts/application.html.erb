@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="wide wow-animation smoothscroll">
   <head>
     <title>Volunthero</title>
     <%= csrf_meta_tags %>
@@ -7,9 +7,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <!--<link rel="icon" href="images/favicon.ico" type="image/x-icon">-->
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Changa+One:400,400i%7CGrand+Hotel%7CLato:300,400,400italic,700"/>
+    <%= stylesheet_link_tag "style" %>
   </head>
 
   <body>
+    <p align="center" class="text-middle">
     <%# ----- Flash message header start----- %>
 	
 	<% if notice %>
@@ -21,23 +30,90 @@
 	<% end %>
 	
 	<%# ----- Flash message header end----- %>
+    </p>
+    <div class="page text-right text-top">
+
+    </div>
       
-    <%# ----- Start current user ----- %>
-	
-    <p align='right'>
-    <% if current_user %>
-      <!-- current_user will return true if a user is logged in -->
-      <%= "Hello #{current_user.firstname} #{current_user.lastname}" %> | <%= link_to 'Home', root_path %> | <%= link_to 'Log Out', logout_path, method: :delete %>
-    <% else %>
-      <!-- not logged in -->
-      <%= link_to 'Home', root_path %> | <%= link_to 'Log In', login_path %> or <%= link_to 'Sign Up', new_vhero_path %>
-    <% end %>
-    <hr>
-	</p>
-    <%# ----- End current user ----- %>
-      
-      <%= yield %>
-      
+    <div class="page text-center">
+      <!-- Page Header-->
+      <header class="page-head">
+        <!-- RD Navbar-->
+        <div class="rd-navbar-wrap rd-navbar-default">
+          <nav data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-sidebar" data-xl-device-layout="rd-navbar-sidebar" data-stick-up-clone="false" data-md-stick-up-offset="100px" data-lg-stick-up-offset="100px" data-auto-height="true" class="rd-navbar">
+            <div class="shell shell-fluid">
+              <div class="rd-navbar-inner">
+                <!-- RD Navbar Panel-->
+                <div class="rd-navbar-panel">
+                  <!-- RD Navbar Toggle-->
+                  <button data-rd-navbar-toggle=".rd-navbar-nav-wrap" class="rd-navbar-toggle"><span></span></button>
+                  <!-- RD Navbar Brand--><a href="index.html" class="rd-navbar-brand brand">
+                    <div class="brand-logo"><img src="<%= image_path("brand-186x65.png") %>" alt="" width="186" height="65"/>
+                    </div></a>
+                </div>
+                <!-- RD Navbar Nav-->
+                <div class="rd-navbar-nav-wrap">
+                  <!-- RD Navbar Brand--><a href="index.html" class="rd-navbar-brand brand">
+                    <div class="brand-logo"><img src="<%= image_path("brand-186x65.png") %>" alt="" width="186" height="65"/>
+                    </div></a>
+                  <!-- RD Navbar Shop
+                  <div class="rd-navbar-shop"><a href="shop-cart.html" class="link link-shop link-default"><span class="big text-gray-light">Cart</span><span class="icon icon-sm mdi mdi-cart-outline"></span><span class="label-inline big">2</span></a></div>
+                  RD Navbar Shop -->
+                  <!-- RD Navbar Nav-->
+                  <ul class="rd-navbar-nav">
+                    <% if current_user %>
+                      <li><%="Logged in as #{current_user.firstname}" %></li>
+                      <li class="active"><%= link_to 'Home', root_path %></li>
+                      <li><a href="about.html">About Us</a></li>
+                      <li><%= link_to 'Profile', vhero_path(session[:id]) %></li>
+                      <li><%= link_to 'Opportunities', vopportunities_path %></li>
+                      <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
+                    <% else %> 
+                      <li class="active"><%= link_to 'Home', root_path %></li>
+                      <li><%= link_to 'Log In', login_path %></li>
+                      <li><%= link_to 'Sign Up', new_vhero_path %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                </div>
+              </div>
+              </nav>
+            </div>
+    <%= yield %>
+    </div>
+    <!-- Page Footer-->
+      <footer class="page-foot text-center footer-light">
+        <section class="section-top-45 section-bottom-45">
+          <!--
+          <div class="shell">
+            <ul class="list list-inline list-footer-nav">
+              <li><a href="menu-single.html" class="text-uppercase">Breakfast</a></li>
+              <li><a href="menu-single.html" class="text-uppercase">Lunch</a></li>
+              <li><a href="menu-single.html" class="text-uppercase">Salads</a></li>
+              <li><a href="menu-single.html" class="text-uppercase">Cakes</a></li>
+              <li><a href="menu-single.html" class="text-uppercase">Drinks</a></li>
+              <li><a href="menu-single.html" class="text-uppercase">Catering</a></li>
+            </ul>
+          </div>
+          -->
+        </section>
+        <section>
+          <div class="shell">
+            <hr>
+          </div>
+          <div class="shell section-20">
+            <div class="range range-xs-center">
+              <div class="cell-md-5">
+                <p class="copyright">
+                  Volunthero
+                  &nbsp;&#169;&nbsp;<span id="copyright-year"></span>&nbsp;<br class="veil-sm"><a href="privacy.html">Privacy Policy</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </footer>
 
   </body>
 </html>

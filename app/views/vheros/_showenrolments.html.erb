@@ -1,5 +1,5 @@
 <p>
-    <h2>Enroled Opportunities</h2>
+    <h2>Enrolled Opportunities</h2>
 </p>
 <p>
     <% @vhero.vopportunities.each do |vheroenrolment| %>
@@ -12,10 +12,10 @@
         </table>
     <% end %>
 </p>
-<p>
+<!--<p>
     <h2>Current Opportunities</h2>
-          <% @vopportunity = Vopportunity.not_enroled %>
-          <% @vopportunity.each do |vopportunity| %>
+          <% #@vopportunity = Vopportunity.not_enroled %>
+          <% #@vopportunity.each do |vopportunity| %>
         <table frame="box">
             <tr><td>Name: <%= link_to vopportunity.voppname, vopportunity_path(vopportunity) %></td></tr>
             <tr><td>Logo: <%= vopportunity.vopplogo %></td></tr>
@@ -24,5 +24,5 @@
             <tr><td>Organization: <%= vopportunity.vorganization.vorgname %></td></tr>
         </table>
         <br>
-            <% end %>
-</p>
+            <% #end %>
+</p>-->

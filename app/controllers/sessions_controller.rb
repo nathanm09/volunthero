@@ -32,7 +32,4 @@ class SessionsController < ApplicationController
   end
   
     # ----- end of login/logout functionality-----
-    
-    
-    
 end
