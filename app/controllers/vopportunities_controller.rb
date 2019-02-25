@@ -1,6 +1,6 @@
 class VopportunitiesController < ApplicationController
   before_action :set_vopportunity, only: [:show, :edit, :update, :destroy]
-  #http_basic_authenticate_with name: "nathan", password: "tuxedo", only: [:create, :edit, :destroy]
+  before_action :vorgauthorize, only: [:create, :edit, :update, :destroy]
 
   # GET /vopportunities
   # GET /vopportunities.json
@@ -16,6 +16,8 @@ class VopportunitiesController < ApplicationController
 
   # GET /vopportunities/new
   def new
+    render :layout => "orgapplication"
+    #@vorganization = Vorganization.find(session[:vorgid])
     @vopportunity = Vopportunity.new
   end
 
@@ -26,16 +28,17 @@ class VopportunitiesController < ApplicationController
   # POST /vopportunities
   # POST /vopportunities.json
   def create
-   @vorganization = Vorganization.find(params[:vorganization_id])
-   @vopportunity = @vorganization.vopportunity.create(vopportunity_params)
+   @vorganization = Vorganization.find(session[:vorgid])
+   @vopportunity = @vorganization.vopportunities.build(vopportunity_params)
+   @vopportunity.vorganization_id = session[:vorgid]
 
       respond_to do |format|
       if @vopportunity.save
-        format.html { redirect_to @vorganization, notice: 'Vopportunity was successfully created.' }
+        format.html { redirect_to @vorganization, notice: 'Opportunity was successfully created.' }
         format.json { render :show, status: :created, location: @vopportunity }
       else
         format.html { render :new }
-        format.json { render json: @vopportunity.errors, status: :unprocessable_entity }
+        format.json { render json: @vopportunity.errors, notice: 'Something went wrong, please try again.'  }
       end
     end
       
@@ -72,7 +75,7 @@ class VopportunitiesController < ApplicationController
   def destroy
     @vopportunity.destroy
     respond_to do |format|
-      format.html { redirect_to vopportunities_url, notice: 'Vopportunity was successfully destroyed.' }
+      format.html { redirect_to vopportunities_url, notice: 'Opportunity was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -86,5 +89,9 @@ class VopportunitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def vopportunity_params
       params.require(:vopportunity).permit(:voppname, :vopplogo, :title, :shortdescr, :vorganization_id)
+    end
+    
+    def set_vorganization
+      @vorganization = Vorganization.find(params[:vorganization_id])
     end
 end

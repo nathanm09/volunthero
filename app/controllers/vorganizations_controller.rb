@@ -1,6 +1,7 @@
 class VorganizationsController < ApplicationController
   before_action :set_vorganization, only: [:show, :edit, :update, :destroy]
-  http_basic_authenticate_with name: "nathan", password: "tuxedo", except: [:index, :show]
+  before_action :vorgauthorize, only: [:edit, :update, :destroy]
+  layout "orgapplication"
     
   # GET /vorganizations
   # GET /vorganizations.json
@@ -26,6 +27,7 @@ class VorganizationsController < ApplicationController
   # POST /vorganizations.json
   def create
     @vorganization = Vorganization.new(vorganization_params)
+    @vorganization.email.downcase!
     
     respond_to do |format|
       if @vorganization.save
@@ -33,7 +35,7 @@ class VorganizationsController < ApplicationController
         format.json { render :show, status: :created, location: @vorganization }
       else
         format.html { render :new }
-        format.json { render json: @vorganization.errors, status: :unprocessable_entity }
+        flash.now.alert = "Oops, couldn't create account. Please make sure you are using a valid email and password and try again."
       end
     end
   end
@@ -70,6 +72,6 @@ class VorganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vorganization_params
-      params.require(:vorganization).permit(:vorgname, :website, :vorglogo, :shortdescr, :vorgtype, :city, :province, :country, :handles)
+      params.require(:vorganization).permit(:vorgname, :website, :vorglogo, :shortdescr, :vorgtype, :city, :province, :country, :handles, :email, :password, :password_confirmation)
     end
 end

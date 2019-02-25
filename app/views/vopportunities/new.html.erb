@@ -1,5 +1,69 @@
-<h1>New Vopportunity</h1>
 
-<%= render 'form', vopportunity: @vopportunity %>
-
-<%= link_to 'Back', vopportunities_path %>
+<main class="page-content">  
+        <!-- Breadcrumbs & Page title -->
+        <section class="text-center section-34 section-sm-60 section-md-top-100 section-md-bottom-105 bg-image bg-breadcrumbs-01">
+          <div class="shell shell-fluid">
+            <div class="range range-condensed">
+              <div class="cell-xs-12 cell-xl-preffix-1 cell-xl-11">
+                <p class="h3 text-white">Post a New Opportunity</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="bg-white text-center section-50 section-sm-bottom-100">
+          <div class="shell">
+            <div class="range range-xs-center offset-top-15">
+              <div class="cell-sm-10 cell-md-8">
+                <div class="inset-lg-left-50 inset-lg-right-50">
+                  <!-- RD Mailform-->       
+                <%= @vorganization = Vorganization.find(session[:vorgid]) %>
+                <%= form_with(model: [ @vorganization, @vorganization.vopportunities.build ], local: true) do |form| %>   
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <%= form.text_field :voppname, autofocus: true, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :voppname %></label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <%= form.text_field :title, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :title %></label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <%= form.text_field :vopplogo, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :vorglogo %></label>
+                      </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group offset-top-15">
+                        <%= form.text_area :shortdescr, class: "form-control" %> 
+                        <label for="message" class="form-label form-label-outside"> <%= form.label :shortdescr %></label>
+                      </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="offset-top-15">
+                      <div class="form-inline-flex">
+                        <div class="form-group">
+                          <%= form.submit "Create", class: "btn btn-burnt-sienna btn-fullwidth btn-shadow" %>
+                          <!--<button type="submit" class="btn btn-burnt-sienna btn-fullwidth">Send message</button>-->
+                        </div>
+                        <% end %>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+</main>
+    <%= javascript_include_tag "core.min" %>
+    <%= javascript_include_tag "script" %>

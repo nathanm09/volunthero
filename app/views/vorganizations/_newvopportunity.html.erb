@@ -1,6 +1,6 @@
 <p><h1>Add an opportunity:</h1></p>
 
-<%= form_with(model: [ @vorganization, @vorganization.vopportunity.build ], local: true) do |form| %>
+<%= form_with(model: [ @vorganization, @vorganization.vopportunities.build ], local: true) do |form| %>
 
   <div class="field">
     <%= form.label :voppname %>

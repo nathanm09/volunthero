@@ -1,0 +1,51 @@
+<main class="page-content">  
+        <!-- Breadcrumbs & Page title-->
+        <section class="text-center section-34 section-sm-60 section-md-top-100 section-md-bottom-105 bg-image bg-breadcrumbs-01">
+          <div class="shell shell-fluid">
+            <div class="range range-condensed">
+              <div class="cell-xs-12 cell-xl-preffix-1 cell-xl-11">
+                <p class="h3 text-white">Organization Log In</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="bg-white text-center section-50 section-sm-bottom-100">
+          <div class="shell">
+            <div class="range range-xs-center offset-top-15">
+              <div class="cell-sm-10 cell-md-8">
+                <div class="inset-lg-left-50 inset-lg-right-50">
+                  <!-- RD Mailform-->
+                    <%= form_for :vorglogin do |form| %>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <%= form.text_field :email, autofocus: true, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :email %></label>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <%= form.password_field :password, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :password %></label>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="offset-top-15">
+                      <div class="form-inline-flex">
+                        <div class="form-group">
+                          <%= form.submit "Log In", class: "btn btn-burnt-sienna btn-fullwidth btn-shadow" %>
+                        </div>
+                        <% end %>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+</main>
+
+    <%= javascript_include_tag "core.min" %>
+    <%= javascript_include_tag "script" %>
+
+<%= link_to 'Back', vheros_path %>

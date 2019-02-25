@@ -1,6 +1,6 @@
 class VherosController < ApplicationController
   before_action :set_vhero, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, only: [:edit, :update, :destroy]
+  before_action :vheroauthorize, only: [:show, :edit, :update, :destroy]
 
   # GET /vheros
   # GET /vheros.json

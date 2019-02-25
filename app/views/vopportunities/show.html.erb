@@ -37,14 +37,14 @@
                 </div>
                 <div class="offset-top-45">
                   <div class="group-sm">
-                    <% if current_user %>
+                    <% if current_vhero %>
                     <% if VopportunityEnrolment.exists?(vhero_id: current_user.id, vopportunity_id: @vopportunity.id) %>
                         <span><%= link_to 'Cancel Enrollment', vopportunity_enrolment_path(vhero_id: current_user.id, vopportunity_id: @vopportunity.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-burnt-sienna btn-fullwidth btn-shadow" %></span>
                     <% else %>
                       <span><%= form.submit 'Enroll', class: "btn btn-burnt-sienna btn-fullwidth btn-shadow" %></span>
                     <% end %>
                     <% else %>
-                      <span><h5><%= link_to 'Log In to Enroll', login_path, class: "btn btn-burnt-sienna btn-fullwidth btn-shadow" %></h5></span>
+                      <span><h5><%= link_to 'Log In to Enroll', vherologin_path, class: "btn btn-burnt-sienna btn-fullwidth btn-shadow" %></h5></span>
                     <% end %>
                   </div>
                 </div>

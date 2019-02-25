@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    <p align="center" class="text-middle error_explanation">
+    <p align="center" class="text-middle">
     <%# ----- Flash message header start----- %>
 	
 	<% if notice %>
@@ -32,7 +32,7 @@
 	<%# ----- Flash message header end----- %>
     </p>
     <div class="page text-right text-top">
-        <span>I'm an Organization -> <%= link_to 'Log In', vorglogin_path %> | <%= link_to 'Sign Up', new_vorganization_path %></span>
+
     </div>
       
     <div class="page text-center">
@@ -61,17 +61,14 @@
                   RD Navbar Shop -->
                   <!-- RD Navbar Nav-->
                   <ul class="rd-navbar-nav">
-                    <% if current_vhero %>
-                      <li><%="Logged in as #{current_vhero.firstname}" %></li>
-                      <li class="active"><%= link_to 'Home', root_path %></li>
-                      <li><a href="about.html">About Us</a></li>
-                      <li><%= link_to 'Profile', vhero_path(session[:vheroid]) %></li>
-                      <li><%= link_to 'Opportunities', vopportunities_path %></li>
-                      <li><%= link_to 'Log Out', vherologout_path, method: :delete %></li>
+                    <% if current_vorg %>
+                      <li><%="Logged in as #{current_vorg.vorgname}" %></li>
+                      <li><%= link_to 'Profile', vorganization_path(session[:vorgid]) %></li>
+                      <li><%= link_to 'Log Out', vorglogout_path, method: :delete %></li>
                     <% else %> 
                       <li class="active"><%= link_to 'Home', root_path %></li>
-                      <li><%= link_to 'Log In', vherologin_path %></li>
-                      <li><%= link_to 'Sign Up', new_vhero_path %></li>
+                      <li><%= link_to 'Log In', vorglogin_path %></li>
+                      <li><%= link_to 'Sign Up', new_vorganization_path %></li>
                     <% end %>
                   </ul>
                 </div>

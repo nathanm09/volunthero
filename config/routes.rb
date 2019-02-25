@@ -8,26 +8,31 @@ Rails.application.routes.draw do
     resources :vopportunity_enrolments, only: :create
   end
   resources :vopportunities
-
+  resources :vorganizations
     
   get 'home/index'
   root 'home#index'    
     
-	# -----New Vhero Functionality-----
+	# -----New Vhero/Vorganization Functionality-----
 	
     # We can use users#new for now, or replace this with the controller and action you want to be the site root:
 	root to: 'vheros#new'
+    root to: 'vorganizations#new'
 	# sign up page with form:
-	#get 'vheros/new' => 'vheros#new', :as => :new_vhero   
+	#get 'vheros/new' => 'vheros#new', :as => :new_vhero
+    #get 'vorganizations/new' => 'vorganizations#new', :as => :new_vorganization
     # create (post) action for when sign up form is submitted:
 	post 'vheros' => 'vheros#create'
-  	# ----- End Vhero Functionality-----
+    post 'vorganizations' => 'vorganizations#create'
+  	# ----- End Vhero/Vorganization Functionality-----
     
-      # ---- Login/Logout Routes ----
-      get '/login'     => 'sessions#new'
-      # create (post) action for when log in form is submitted:
-      post '/login'    => 'sessions#create'
-      # delete action to log out:
-      delete '/logout' => 'sessions#destroy'  
-
+    # ---- Login/Logout Routes ----
+    get '/vherologin'     => 'sessions#vheronew'
+    get '/vorglogin'     => 'sessions#vorgnew'
+    # create (post) action for when log in form is submitted:
+    post '/vherologin'    => 'sessions#vherocreate'
+    post '/vorglogin'    => 'sessions#vorgcreate'
+    # delete action to log out:
+    delete '/vherologout' => 'sessions#vherodestroy'  
+    delete '/vorglogout' => 'sessions#vorgdestroy'
 end

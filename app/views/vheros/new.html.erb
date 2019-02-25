@@ -1,5 +1,5 @@
 <main class="page-content">  
-        <!-- Breadcrumbs & Page title-->
+        <!-- Breadcrumbs & Page title -->
         <section class="text-center section-34 section-sm-60 section-md-top-100 section-md-bottom-105 bg-image bg-breadcrumbs-01">
           <div class="shell shell-fluid">
             <div class="range range-condensed">
@@ -16,49 +16,51 @@
                 <div class="inset-lg-left-50 inset-lg-right-50">
                   <!-- RD Mailform-->
                     <%= form_with(model: @vhero, local: true) do |form| %>
-
                     <div class="form-inline-flex">
                       <div class="form-group">
-                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :firstname %></label><br>
                         <%= form.text_field :firstname, autofocus: true, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :firstname %></label>
                       </div>
                       <div class="form-group">
-                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :lastname %></label><br>
                         <%= form.text_field :lastname, class: "form-control" %>
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :lastname %></label>
                       </div>
                     </div>
+                    <br>
                     <div class="form-inline-flex">
                       <div class="form-group">
-                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :city %></label><br>
-                        <%= form.text_field :city, autofocus: true, class: "form-control" %>
+                        <%= form.text_field :city, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :city %></label>
                       </div>
                       <div class="form-group">
-                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :province %></label><br>
                         <%= form.text_field :province, class: "form-control" %>
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :province %></label>
                       </div>
                       <div class="form-group">
-                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :country %></label><br>
                         <%= form.text_field :country, class: "form-control" %>
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :country %></label>
                       </div>
                     </div>
+                    <br>
                     <div class="form-inline-flex">
                       <div class="form-group">
-                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :email %></label><br>
-                        <%= form.text_field :email, autofocus: true, class: "form-control" %>
+                        <%= form.text_field :email, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :email %></label>
                       </div>
                       <div class="form-group">
-                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :password %></label><br>
                         <%= form.password_field :password, class: "form-control" %>
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :password %></label>
                       </div>
                     </div>
+                    <br>
                     <div class="form-inline-flex">
                       <div class="form-group">
-                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :profile_pic %></label><br>
                         <%= form.text_field :profile_pic, class: "form-control" %>
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :profile_pic %></label>
                       </div>
                       <div class="form-group">
-                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :password_confirmation %></label><br>
                         <%= form.password_field :password_confirmation, class: "form-control" %>
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :password_confirmation %></label>
                       </div>
                     </div>
                     <br>
@@ -66,30 +68,30 @@
                     <br>
                     <div class="form-inline-flex">
                       <div class="form-group">
-                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :jobtitle %></label><br>
-                        <%= form.text_field :jobtitle, autofocus: true, class: "form-control" %>
+                        <%= form.text_field :jobtitle, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :jobtitle %></label>
                       </div>
                       <div class="form-group">
-                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :organization %></label><br>
                         <%= form.text_field :organization, class: "form-control" %>
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :organization %></label>
                       </div>
                     </div>
                     <div class="form-group offset-top-15">
-                      <label for="message" class="form-label form-label-outside">
-                      <%= form.label :shortdescr %></label><br>
                       <%= form.text_area :shortdescr, class: "form-control" %> 
+                      <label for="message" class="form-label form-label-outside">
+                      <%= form.label :shortdescr %></label>
                     </div>
                     <br>
                     <hr>
                     <br>
                     <div class="form-inline-flex">
                       <div class="form-group">
-                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :handles %></label><br>
                         <%= form.text_field :handles, autofocus: true, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :handles %></label>
                       </div>
                       <div class="form-group">
-                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :interests %></label><br>
                         <%= form.text_field :interests, class: "form-control" %>
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :interests %></label>
                       </div>
                     </div>
                     <br>
@@ -110,5 +112,6 @@
           </div>
         </section>
 </main>
-
+    <%= javascript_include_tag "core.min" %>
+    <%= javascript_include_tag "script" %>
 <%= link_to 'Back', vheros_path %>
