@@ -1,0 +1,706 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.4
+-- Dumped by pg_dump version 10.4
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: active_storage_attachments; Type: TABLE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE TABLE public.active_storage_attachments (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    record_type character varying NOT NULL,
+    record_id bigint NOT NULL,
+    blob_id bigint NOT NULL,
+    created_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_attachments OWNER TO nathanmcauley;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE SEQUENCE public.active_storage_attachments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_attachments_id_seq OWNER TO nathanmcauley;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanmcauley
+--
+
+ALTER SEQUENCE public.active_storage_attachments_id_seq OWNED BY public.active_storage_attachments.id;
+
+
+--
+-- Name: active_storage_blobs; Type: TABLE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE TABLE public.active_storage_blobs (
+    id bigint NOT NULL,
+    key character varying NOT NULL,
+    filename character varying NOT NULL,
+    content_type character varying,
+    metadata text,
+    byte_size bigint NOT NULL,
+    checksum character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_blobs OWNER TO nathanmcauley;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE SEQUENCE public.active_storage_blobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_blobs_id_seq OWNER TO nathanmcauley;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanmcauley
+--
+
+ALTER SEQUENCE public.active_storage_blobs_id_seq OWNED BY public.active_storage_blobs.id;
+
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ar_internal_metadata OWNER TO nathanmcauley;
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO nathanmcauley;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE TABLE public.users (
+    id bigint NOT NULL,
+    email character varying,
+    password_digest character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO nathanmcauley;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE SEQUENCE public.users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO nathanmcauley;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanmcauley
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: vheros; Type: TABLE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE TABLE public.vheros (
+    id bigint NOT NULL,
+    firstname character varying,
+    lastname character varying,
+    email character varying,
+    shortdescr character varying,
+    jobtitle character varying,
+    organization character varying,
+    lastschool character varying,
+    city character varying,
+    province character varying,
+    country character varying,
+    handles character varying,
+    interests character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    profile_pic character varying,
+    user_id bigint,
+    password_digest character varying
+);
+
+
+ALTER TABLE public.vheros OWNER TO nathanmcauley;
+
+--
+-- Name: vheros_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE SEQUENCE public.vheros_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.vheros_id_seq OWNER TO nathanmcauley;
+
+--
+-- Name: vheros_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanmcauley
+--
+
+ALTER SEQUENCE public.vheros_id_seq OWNED BY public.vheros.id;
+
+
+--
+-- Name: vopportunities; Type: TABLE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE TABLE public.vopportunities (
+    id bigint NOT NULL,
+    voppname character varying,
+    vopplogo character varying,
+    shortdescr character varying,
+    vorganization_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    voppbanner character varying,
+    vopphours character varying,
+    voppaddress character varying,
+    voppcity character varying,
+    vopparea character varying,
+    voppcountry character varying,
+    voppdate timestamp without time zone,
+    vherodescription character varying,
+    responsibilities character varying,
+    jobfunction character varying,
+    positionsavailable character varying,
+    deadlinedate timestamp without time zone,
+    website character varying,
+    industry character varying
+);
+
+
+ALTER TABLE public.vopportunities OWNER TO nathanmcauley;
+
+--
+-- Name: vopportunities_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE SEQUENCE public.vopportunities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.vopportunities_id_seq OWNER TO nathanmcauley;
+
+--
+-- Name: vopportunities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanmcauley
+--
+
+ALTER SEQUENCE public.vopportunities_id_seq OWNED BY public.vopportunities.id;
+
+
+--
+-- Name: vopportunity_enrolments; Type: TABLE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE TABLE public.vopportunity_enrolments (
+    id bigint NOT NULL,
+    vhero_id integer,
+    vopportunity_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.vopportunity_enrolments OWNER TO nathanmcauley;
+
+--
+-- Name: vopportunity_enrolments_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE SEQUENCE public.vopportunity_enrolments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.vopportunity_enrolments_id_seq OWNER TO nathanmcauley;
+
+--
+-- Name: vopportunity_enrolments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanmcauley
+--
+
+ALTER SEQUENCE public.vopportunity_enrolments_id_seq OWNED BY public.vopportunity_enrolments.id;
+
+
+--
+-- Name: vorganizations; Type: TABLE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE TABLE public.vorganizations (
+    id bigint NOT NULL,
+    vorgname character varying,
+    website character varying,
+    vorglogo character varying,
+    shortdescr character varying,
+    vorgtype character varying,
+    city character varying,
+    province character varying,
+    country character varying,
+    handles character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    user_id bigint,
+    email character varying,
+    password_digest character varying,
+    vorgaddress character varying,
+    aboutus character varying
+);
+
+
+ALTER TABLE public.vorganizations OWNER TO nathanmcauley;
+
+--
+-- Name: vorganizations_id_seq; Type: SEQUENCE; Schema: public; Owner: nathanmcauley
+--
+
+CREATE SEQUENCE public.vorganizations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.vorganizations_id_seq OWNER TO nathanmcauley;
+
+--
+-- Name: vorganizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nathanmcauley
+--
+
+ALTER SEQUENCE public.vorganizations_id_seq OWNED BY public.vorganizations.id;
+
+
+--
+-- Name: active_storage_attachments id; Type: DEFAULT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.active_storage_attachments ALTER COLUMN id SET DEFAULT nextval('public.active_storage_attachments_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_blobs id; Type: DEFAULT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval('public.active_storage_blobs_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Name: vheros id; Type: DEFAULT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.vheros ALTER COLUMN id SET DEFAULT nextval('public.vheros_id_seq'::regclass);
+
+
+--
+-- Name: vopportunities id; Type: DEFAULT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.vopportunities ALTER COLUMN id SET DEFAULT nextval('public.vopportunities_id_seq'::regclass);
+
+
+--
+-- Name: vopportunity_enrolments id; Type: DEFAULT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.vopportunity_enrolments ALTER COLUMN id SET DEFAULT nextval('public.vopportunity_enrolments_id_seq'::regclass);
+
+
+--
+-- Name: vorganizations id; Type: DEFAULT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.vorganizations ALTER COLUMN id SET DEFAULT nextval('public.vorganizations_id_seq'::regclass);
+
+
+--
+-- Data for Name: active_storage_attachments; Type: TABLE DATA; Schema: public; Owner: nathanmcauley
+--
+
+COPY public.active_storage_attachments (id, name, record_type, record_id, blob_id, created_at) FROM stdin;
+1	image	Vhero	12	1	2019-04-13 21:59:01.943984
+\.
+
+
+--
+-- Data for Name: active_storage_blobs; Type: TABLE DATA; Schema: public; Owner: nathanmcauley
+--
+
+COPY public.active_storage_blobs (id, key, filename, content_type, metadata, byte_size, checksum, created_at) FROM stdin;
+1	SciM89oMFZHV6BTwjtc1gkD5	johnnyappleseed.jpeg	image/jpeg	{"identified":true,"analyzed":true}	15553	4iaI5p1x7upIEZMCgR2+jA==	2019-04-13 21:59:01.846333
+\.
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: nathanmcauley
+--
+
+COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2018-07-10 20:36:59.686737	2018-07-10 20:36:59.686737
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: nathanmcauley
+--
+
+COPY public.schema_migrations (version) FROM stdin;
+20180710203344
+20180710204401
+20180716180943
+20180716182320
+20180815183103
+20180815183749
+20180824193838
+20180917181540
+20181018051929
+20181018052031
+20181018052510
+20190121041606
+20190121041647
+20190222194346
+20190228040813
+20190301194011
+20190314031042
+20190319025511
+20190413214530
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: nathanmcauley
+--
+
+COPY public.users (id, email, password_digest, created_at, updated_at) FROM stdin;
+1	mcauleyn9@gmail.com	$2a$10$YuYktqAeTGXmmHo4nRBPoe7JTUFv0JWltVrN1ZV2pb6dUPvL/m3W6	2018-10-22 02:15:06.547193	2018-10-22 02:15:06.547193
+2	steph.moriartey@gmail.com	$2a$10$rjefcw1j5r2Ch3KR1T7MVuGTsx2sPr9YiMrx0fazEp.v0TyhG/bGW	2018-10-22 02:17:29.616472	2018-10-22 02:17:29.616472
+3	willowilmcauley@gmail.com	$2a$10$udvE/TBN0WdZp26U8IGEmeOipTz9tKS.xwGv5rtaubxKorn24Yx7q	2018-10-22 02:19:42.894986	2018-10-22 02:19:42.894986
+4	tuxedo@dog.com	$2a$10$cBoTtMevvX638g4lBMntV.PPMU8l01YSVhDRVApR2Nk1l88Mt1ENu	2018-10-22 02:21:22.364591	2018-10-22 02:21:22.364591
+5	mac@dog.com	$2a$10$tqWNHOQUs3BKGFAEQiirF.64rCQIbNlvNtw7XLcQb71csZGSlXVyO	2018-10-22 02:23:19.604896	2018-10-22 02:23:19.604896
+6	jsmith@gmail.com	$2a$10$o4w/Z3sqxoi4xmT5vN8Fjev.RL3hjVzAO8Zeg7MKLZ2pcyvxOL8jK	2018-10-22 02:28:29.612778	2018-10-22 02:28:29.612778
+\.
+
+
+--
+-- Data for Name: vheros; Type: TABLE DATA; Schema: public; Owner: nathanmcauley
+--
+
+COPY public.vheros (id, firstname, lastname, email, shortdescr, jobtitle, organization, lastschool, city, province, country, handles, interests, created_at, updated_at, profile_pic, user_id, password_digest) FROM stdin;
+13	Mitch	Marner	mitch@leafs.ca	I play hockey and am losing Game #2 of the 2019 playoffs	Hockey Player	Toronto Maple Leafs	\N	Toronto	Ontario	Canada			2019-04-14 02:34:17.802561	2019-04-14 02:34:17.802561	\N	\N	$2a$10$lhDTB5/GRlzlt26nu2TajOdkZYEt4p7YTt2PDEd//9I3EvA8AJWV.
+4	Brie	McAuley	no email	I'm the second daughter	Homeless			Calgary	AB	Canada			2018-08-24 19:58:34.045599	2018-08-24 19:58:34.045599	vheros/brieprofile.png	\N	\N
+2	Stephanie	Moriartey	steph.moriartey@gmail.com	This is my wife	Junior Vice President	Rana	Some Doctor Stuff	Edmonton	Alberta	Canada	@steph		2018-07-20 18:07:17.891699	2018-08-16 17:19:17.705475	vheros/stephprofile.png	2	\N
+3	Willow	McAuley	willowilmcauley@gmail.com	I'm the first daughter	No Job	McAuley Household		Calgary	AB	Canada	@willow		2018-08-24 19:57:33.868011	2018-08-24 19:57:33.868011	vheros/willowprofile.png	3	\N
+5	Tuxedo	McAuley	tuxedo@dog.com	I'm just a dog	Licking Mac			Calgary	AB	Canada			2018-08-24 19:59:36.509297	2018-08-24 19:59:36.509297	vheros/tuxedoprofile.png	4	\N
+6	Mac	McAuley	mac@dog.com	Tuxedo's brother	I'm a dog			Calgary	AB	Canada			2018-08-24 20:00:41.720218	2018-08-24 20:00:41.720218	vheros/macprofile.png	5	\N
+7	John	Smith	jsmith@gmail.com	I am a test user	System Developer	Trimac	\N	Calgary	Alberta	Canada	@johnsmith	no interests	2018-08-31 19:42:45.558183	2018-08-31 19:42:45.558183	\N	6	\N
+8	BoB	Bobby	boba@bob.com	\N	Job title	org							2019-01-22 04:05:09.128338	2019-01-22 04:05:09.128338	\N	\N	$2a$10$es0dSByeF6RJ4px./g9TlOfycVwVJox8pAfkhCkh/FiABSmLlG8ni
+9	Gordon	McAuley	gordon@abingtonhomes.ca	I am the FATHER!!	Owner	Abington Homes	\N	Beaumont	AB	Canada	@gordgeous	construction	2019-01-23 04:13:28.4907	2019-01-23 04:13:28.4907	\N	\N	$2a$10$14DaxXlSxdkF5hxY/EUU8eTu4T3o0YEkb0Dl91nBlRvND/MgjfHJC
+10	Stephanie	Moriartey	steph@gmail.com	Just trying to make the world a better place for my kids.	Mat Leave	McAuley Household	\N	Calgary	Alberta	Canada	@foodwithdrsteph	soccer	2019-01-23 04:15:56.868961	2019-01-23 04:15:56.868961	\N	\N	$2a$10$AGP0bdUiILfw6amUl8s7uuyeuMcaoKRqLlMWMNWjBG9Hxj.WoW41W
+11	Nathan	McAuley	mcauleyn9@gmail.com	I am sitting on the couch with my dogs, coding this website and watching the all-star game. 	Project Manager	Brookfield	\N	Calgary	AB	Canada	@mcauleyn	hockey	2019-01-27 03:35:54.44321	2019-01-27 04:30:22.756086	vheros/nathanprofile.png	\N	$2a$10$BQmgOXb5ZcUCjK4OpqF0Z.k6bJxHDZRnUHx4BwUrhOEE4MjpYIpK.
+12	Johnny	Appleseed	johnappleseed@gmail.com	I don't have too much to say about myself. I collect apples and want to start collecting apples for other people...for free or something	Chief Apple Collector	The Orchard	\N	Calgary	Alberta	Canada	@appleseed	Peeling Apples	2019-04-13 21:59:01.02793	2019-04-13 21:59:01.951792	\N	\N	$2a$10$7958ooquGBKD0dcQ6N17Seu9bLpcBBRsGt9DhouFN5FEhnF0s62OW
+\.
+
+
+--
+-- Data for Name: vopportunities; Type: TABLE DATA; Schema: public; Owner: nathanmcauley
+--
+
+COPY public.vopportunities (id, voppname, vopplogo, shortdescr, vorganization_id, created_at, updated_at, voppbanner, vopphours, voppaddress, voppcity, vopparea, voppcountry, voppdate, vherodescription, responsibilities, jobfunction, positionsavailable, deadlinedate, website, industry) FROM stdin;
+2	Opp 1	index-sidebar-2-707x347.jpg	a description of something	1	2018-07-10 21:51:58.785024	2018-07-10 21:51:58.785024	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+3	New opp	index-sidebar-3-686x338.jpg	a short description of something	2	2018-07-11 20:10:30.989834	2018-07-11 20:10:30.989834	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+4	Another new opp	index-sidebar-1-689x761.jpg	better than the last one	2	2018-07-11 20:11:28.661806	2018-07-11 20:11:28.661806	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+5	testing out password	index-sidebar-2-707x347.jpg	shortie	2	2018-07-11 20:18:11.416814	2018-07-11 20:18:11.416814	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+7	Stephs Opportunity		Short description of what Steph is seeing.	3	2019-02-25 04:26:52.343105	2019-02-25 04:26:52.343105	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+6	This is another one	vopportunities/member-profile-01-569x656.jpg	A short description that accurately conveys the message I am trying to deliver.	3	2019-02-25 04:24:37.364052	2019-02-25 04:24:37.364052	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+8	A new opportunity		This is a new opportunity that I am posting using a new form. Hopefully this new form looks a little bit better than the previous one. 	3	2019-03-14 03:02:45.910736	2019-03-14 03:02:45.910736	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+11	The Last One Didn't Work		I screwed the last one up. Still need help with Lolo's hamburgers.	5	2019-03-19 03:27:17.110564	2019-03-19 03:27:17.110564		3	4005 Triomphe Blvd	Beau	Alberta	Canada	2019-04-07 00:00:00	Still don't want anyone that is not like me. 	Oversight	Chef	9	2019-04-05 00:00:00	www.abingtonhomes.ca	Food
+9	I need help building a house		I am going to be building a house for a homeless person and need some people to bang some nails in. Any help would be appreciated. 	5	2019-03-19 02:53:44.139085	2019-03-19 02:53:44.139085	\N	\N	\N	\N	\N	\N	2019-03-19 00:00:00	\N	\N	\N	\N	2019-03-19 00:00:00	\N	\N
+10	Cooking Hamburgers		I am cooking hamburgers and I usually cook them pretty rare and people get mad. Need someone with at least a thermometer to tell me when they are done.\r\n	5	2019-03-19 03:21:08.922241	2019-03-19 03:21:08.922241	\N	\N	\N	\N	\N	\N	2019-03-19 00:00:00	\N	\N	\N	\N	2019-03-19 00:00:00	\N	\N
+\.
+
+
+--
+-- Data for Name: vopportunity_enrolments; Type: TABLE DATA; Schema: public; Owner: nathanmcauley
+--
+
+COPY public.vopportunity_enrolments (id, vhero_id, vopportunity_id, created_at, updated_at) FROM stdin;
+3	1	3	2018-08-18 03:41:39.31207	2018-08-18 03:41:39.31207
+4	1	4	2018-08-24 22:03:21.128175	2018-08-24 22:03:21.128175
+13	11	2	2019-02-20 04:10:07.671123	2019-02-20 04:10:07.671123
+14	11	4	2019-02-20 04:11:10.157395	2019-02-20 04:11:10.157395
+15	11	3	2019-02-20 04:12:23.475282	2019-02-20 04:12:23.475282
+\.
+
+
+--
+-- Data for Name: vorganizations; Type: TABLE DATA; Schema: public; Owner: nathanmcauley
+--
+
+COPY public.vorganizations (id, vorgname, website, vorglogo, shortdescr, vorgtype, city, province, country, handles, created_at, updated_at, user_id, email, password_digest, vorgaddress, aboutus) FROM stdin;
+1	Steph Org	somelink	logo	the is the first organization	Non-Profit	Calgary	AB	Canada	organization	2018-07-10 00:00:00	2018-07-10 00:00:00	\N	\N	\N	\N	\N
+2	NathanOrg	www.google.ca	logo	This is the best organization	None	Calgary	AB	Canada	yes	2018-07-11 20:01:34.104133	2018-07-11 20:01:34.104133	\N	\N	\N	\N	\N
+3	Brookfield Residential	www.brookfieldrp.com	vorganizations/brp_logo.png	We are a fake company that Nathan is using in his Rails development.....patent pending.	For Profit	Calgary	Alberta	Canada	@brookfieldrp	2019-02-23 21:18:25.812375	2019-02-23 21:18:25.812375	\N	nathan.mcauley@brookfieldrp.com	$2a$10$M6IpVR2Qht418CLeiVB9s.1.Ys0pandAuHPEtFgK8sGlx8GI6ELLe	\N	\N
+4	Rana Respiratory Care	https://www.ranacaregroup.com	vorganizations/rana-logo.png	Helping people live their best lives.	Private	Calgary	Alberta	Canada	@RANACareGroup	2019-03-14 03:33:48.158704	2019-03-14 03:33:48.158704	\N	steph.moriartey@gmail.com	$2a$10$PJGyMH5VezC3.Dk04PGrrOt94st/N1gMsAiv/ehVY0d15UZxoiBci	\N	\N
+5	Abington Homes	www.abingtonhomes.ca	vorganizations/abington.jpg	We’re in the business of building stunning, master-crafted, uniquely customized homes.	Private	St Albert	Alberta	Canada	@abingtonhomes	2019-03-19 02:49:06.818586	2019-03-19 02:49:06.818586	\N	gordon@abingtonhomes.ca	$2a$10$p5zbR6OgIkNn8yYTH8mo7OWQffauoiyMTFuH6CLiWSjmHM5pzp85O	\N	\N
+\.
+
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanmcauley
+--
+
+SELECT pg_catalog.setval('public.active_storage_attachments_id_seq', 1, true);
+
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanmcauley
+--
+
+SELECT pg_catalog.setval('public.active_storage_blobs_id_seq', 1, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanmcauley
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 6, true);
+
+
+--
+-- Name: vheros_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanmcauley
+--
+
+SELECT pg_catalog.setval('public.vheros_id_seq', 13, true);
+
+
+--
+-- Name: vopportunities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanmcauley
+--
+
+SELECT pg_catalog.setval('public.vopportunities_id_seq', 11, true);
+
+
+--
+-- Name: vopportunity_enrolments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanmcauley
+--
+
+SELECT pg_catalog.setval('public.vopportunity_enrolments_id_seq', 15, true);
+
+
+--
+-- Name: vorganizations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nathanmcauley
+--
+
+SELECT pg_catalog.setval('public.vorganizations_id_seq', 5, true);
+
+
+--
+-- Name: active_storage_attachments active_storage_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT active_storage_attachments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_blobs active_storage_blobs_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.active_storage_blobs
+    ADD CONSTRAINT active_storage_blobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vheros vheros_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.vheros
+    ADD CONSTRAINT vheros_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vopportunities vopportunities_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.vopportunities
+    ADD CONSTRAINT vopportunities_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vopportunity_enrolments vopportunity_enrolments_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.vopportunity_enrolments
+    ADD CONSTRAINT vopportunity_enrolments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vorganizations vorganizations_pkey; Type: CONSTRAINT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.vorganizations
+    ADD CONSTRAINT vorganizations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_active_storage_attachments_on_blob_id; Type: INDEX; Schema: public; Owner: nathanmcauley
+--
+
+CREATE INDEX index_active_storage_attachments_on_blob_id ON public.active_storage_attachments USING btree (blob_id);
+
+
+--
+-- Name: index_active_storage_attachments_uniqueness; Type: INDEX; Schema: public; Owner: nathanmcauley
+--
+
+CREATE UNIQUE INDEX index_active_storage_attachments_uniqueness ON public.active_storage_attachments USING btree (record_type, record_id, name, blob_id);
+
+
+--
+-- Name: index_active_storage_blobs_on_key; Type: INDEX; Schema: public; Owner: nathanmcauley
+--
+
+CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_blobs USING btree (key);
+
+
+--
+-- Name: index_vheros_on_user_id; Type: INDEX; Schema: public; Owner: nathanmcauley
+--
+
+CREATE INDEX index_vheros_on_user_id ON public.vheros USING btree (user_id);
+
+
+--
+-- Name: index_vorganizations_on_user_id; Type: INDEX; Schema: public; Owner: nathanmcauley
+--
+
+CREATE INDEX index_vorganizations_on_user_id ON public.vorganizations USING btree (user_id);
+
+
+--
+-- Name: vorganizations fk_rails_42e9fa4016; Type: FK CONSTRAINT; Schema: public; Owner: nathanmcauley
+--
+
+ALTER TABLE ONLY public.vorganizations
+    ADD CONSTRAINT fk_rails_42e9fa4016 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
