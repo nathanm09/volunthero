@@ -55,8 +55,8 @@
                     <br>
                     <div class="form-inline-flex">
                       <div class="form-group">
-                        <%= form.text_field :profile_pic, class: "form-control" %>
-                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :profile_pic %></label>
+                        <%= form.file_field :image, class: "form-control" %>
+                        <label for="contact-username" class="form-label form-label-outside"><%= form.label :image %></label>
                       </div>
                       <div class="form-group">
                         <%= form.password_field :password_confirmation, class: "form-control" %>

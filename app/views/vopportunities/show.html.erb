@@ -3,20 +3,42 @@
     <main class="page-content">
         <section class="section-50 section-sm-100">
           <div class="shell">
-            <div class="range range-xs-center">
-              <div class="cell-sm-6 text-lg-left">
-                <!-- Slick Carousel-->
-                <div data-arrows="false" data-loop="false" data-dots="false" data-swipe="false" data-items="1" data-child="#child-carousel" data-for="#child-carousel" class="slick-slider carousel-parent">
-                  <div class="item"><img src="<%= image_path(@vopportunity.vopplogo) %>" alt="" width="542" height="530" class="img-responsive reveal-inline-block"/>
-                  </div>
-                </div>
-                <div id="child-carousel" data-for=".carousel-parent" data-arrows="false" data-loop="false" data-dots="false" data-swipe="true" data-items="3" data-xs-items="3" data-sm-items="3" data-md-items="4" data-lg-items="5" data-slide-to-scroll="1" class="slick-slider align-center">
-                  <div class="item">
-                    <div><img src="<%= image_path(@vopportunity.vopplogo) %>" alt="" width="64" height="63"/>
+            <div class="range range-xs-center">              
+              <div class="cell-sm-7 cell-md-6">
+                <div class="img-thumbnail-custom">
+                    <img src="<%= image_path(@vopportunity.vopplogo) %>" alt="" width="569" height="656" class="img-responsive"/>
+                    <% if current_vhero %>
+                    <% if VopportunityEnrolment.exists?(vhero_id: current_user.id, vopportunity_id: @vopportunity.id) %>
+                    <div class="caption">
+                      <div class="group-lg">
+                        <ul class="list-inline text-middle">
+                        </ul><%= link_to 'Cancel Enrollment', vopportunity_enrolment_path(vhero_id: current_user.id, vopportunity_id: @vopportunity.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-white-outline btn-shape-circle text-middle" %>
+                      </div>
                     </div>
-                  </div>
+                    <% else %>
+                    <div class="caption">
+                      <div class="group-lg">
+                        <ul class="list-inline text-middle">
+                        </ul><%= form.submit 'Enroll', class: "btn btn-burnt-sienna btn-fullwidth btn-shadow" %>
+                      </div>
+                    </div>
+                    <% end %>
+                    <% else %>
+                    <% if current_vorg %>
+
+                    <% else %>
+                    <div class="caption">
+                      <div class="group-lg">
+                        <ul class="list-inline text-middle">
+                        </ul><%= link_to 'Log In to Enroll', vherologin_path, class: "btn btn-burnt-sienna btn-fullwidth btn-shadow" %>
+                      </div>
+                    </div>
+                    <% end %>
+                    <% end %>
                 </div>
               </div>
+              <div class="cell-sm-6 text-lg-left">
+              <!--Opportunity Information -->
               <div class="cell-sm-6 cell-lg-5 text-sm-left offset-top-60 offset-sm-top-0">
                 <div class="reveal-xs-flex range-xs-middle range-xs-center range-sm-left">
                   <h4 class="font-default"><%= @vopportunity.voppname %></h4>
@@ -35,19 +57,6 @@
                     </ul>
                   </div>
                 </div>
-                <div class="offset-top-45">
-                  <div class="group-sm">
-                    <% if current_vhero %>
-                    <% if VopportunityEnrolment.exists?(vhero_id: current_user.id, vopportunity_id: @vopportunity.id) %>
-                        <span><%= link_to 'Cancel Enrollment', vopportunity_enrolment_path(vhero_id: current_user.id, vopportunity_id: @vopportunity.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-burnt-sienna btn-fullwidth btn-shadow" %></span>
-                    <% else %>
-                      <span><%= form.submit 'Enroll', class: "btn btn-burnt-sienna btn-fullwidth btn-shadow" %></span>
-                    <% end %>
-                    <% else %>
-                      <span><h5><%= link_to 'Log In to Enroll', vherologin_path, class: "btn btn-burnt-sienna btn-fullwidth btn-shadow" %></h5></span>
-                    <% end %>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -55,7 +64,8 @@
         <section class="text-left">
           <div class="responsive-tabs responsive-tabs-horizontal responsive-tabs-horizontal-background">
             <ul class="resp-tabs-list shell">
-              <li>Description</li>
+              <li>Opp. Description</li>
+              <li>Hero Description</li>
               <li>Organization</li>
             </ul>
             <div class="resp-tabs-container">
@@ -63,12 +73,25 @@
                 <p class="text-base"><%= @vopportunity.shortdescr %></p>
               </div>
               <div>
-                <p class="text-base">Should put a description of the organization here.</p>
+                <p class="text-base"><%= @vopportunity.vherodescription %></p>
+              </div>
+              <div>
+                <p class="text-base"><%= @vopportunity.vorganization.shortdescr %></p>
               </div>
             </div>
           </div>
         </section>
         <% end %>
+        <section>
+          <!-- RD Google Map-->
+          <div data-zoom="15" data-y="40.623180" data-x="-73.9874068" data-styles="" class="rd-google-map rd-google-map__model">
+            <ul class="map_locations">
+              <li data-y="40.623180" data-x="-73.9874068">
+                <p><span class="icon"><img src="<%= image_path("gmap-24x34.png") %>" alt="" width="24" height="34"/></span>267 Park Avenue New York, NY 90210</p>
+              </li>
+            </ul>
+          </div>
+        </section>
       </main>
 
 <%= link_to 'Back', vopportunities_path %>

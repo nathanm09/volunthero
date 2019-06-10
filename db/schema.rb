@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_22_194346) do
+ActiveRecord::Schema.define(version: 2019_04_13_214530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -46,11 +67,24 @@ ActiveRecord::Schema.define(version: 2019_02_22_194346) do
   create_table "vopportunities", force: :cascade do |t|
     t.string "voppname"
     t.string "vopplogo"
-    t.string "title"
     t.string "shortdescr"
     t.integer "vorganization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "voppbanner"
+    t.string "vopphours"
+    t.string "voppaddress"
+    t.string "voppcity"
+    t.string "vopparea"
+    t.string "voppcountry"
+    t.datetime "voppdate"
+    t.string "vherodescription"
+    t.string "responsibilities"
+    t.string "jobfunction"
+    t.string "positionsavailable"
+    t.datetime "deadlinedate"
+    t.string "website"
+    t.string "industry"
   end
 
   create_table "vopportunity_enrolments", force: :cascade do |t|
@@ -75,6 +109,8 @@ ActiveRecord::Schema.define(version: 2019_02_22_194346) do
     t.bigint "user_id"
     t.string "email"
     t.string "password_digest"
+    t.string "vorgaddress"
+    t.string "aboutus"
     t.index ["user_id"], name: "index_vorganizations_on_user_id"
   end
 

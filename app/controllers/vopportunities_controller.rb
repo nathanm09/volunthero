@@ -88,7 +88,7 @@ class VopportunitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vopportunity_params
-      params.require(:vopportunity).permit(:voppname, :vopplogo, :title, :shortdescr, :vorganization_id)
+      params.require(:vopportunity).permit(:voppname, :vopplogo, :title, :shortdescr, :vorganization_id, :vherodescription, :responsibilities, :jobfunction, :positionsavailable, :deadlinedate, :website, :industry, :voppbanner, :voppdate, :vopphours, :voppaddress, :voppcity, :vopparea, :voppcountry)
     end
     
     def set_vorganization

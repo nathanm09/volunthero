@@ -42,23 +42,22 @@
           <br><br>
           <section class="text-center text-sm-left section-50 section-sm-top-80 section-sm-bottom-100 bg-ecru-white">
           <div class="shell">
-            <p align="center"><%= link_to 'New Opportunity', new_vorganization_vopportunity_path(@vorganization) %></p>
+            <p align="center"><%= link_to 'Post New Opportunity', new_vorganization_vopportunity_path(@vorganization), class: "btn btn-burnt-sienna" %></p>
             <h4 class="font-default text-center"><%=@vorganization.vorgname %>'s Posted Opportunities</h4>
-            <div class="range">
             <% x = 2 %>
             <% @vorganization.vopportunities.each do |vorgposting| 
             if vorgposting.present?
             if x.even? %>
-            
+            <div class="range">
               <div class="cell-sm-6">
                 <div class="job-offer bg-white">
                   <%= link_to vorgposting, class: "h5" do %>
                   <%= vorgposting.voppname %>
                   <% end %>
                   <ul class="list-inline offset-top-10">
-                    <li><span class="text-middle icon icon-xxs icon-primary mdi mdi-map-marker"></span><span class="text-middle">?</span></li>
-                    <li><span class="text-middle icon icon-xxs icon-primary mdi mdi-clock"></span><span class="text-middle">?</span></li>
-                    <li><span class="text-middle icon icon-xxs icon-primary mdi mdi-calendar"></span><span class="text-middle"><%= vorgposting.created_at %></span></li>
+                    <li><span class="text-middle icon icon-xxs icon-primary mdi mdi-map-marker"></span><span class="text-middle"><%= vorgposting.created_at.strftime ("%B %-d, %Y") %></span></li>
+                    <li><span class="text-middle icon icon-xxs icon-primary mdi mdi-clock"></span><span class="text-middle"><%= vorgposting.deadlinedate.strftime ("%B %-d, %Y") %></span></li>
+                    <li><span class="text-middle icon icon-xxs icon-primary mdi mdi-calendar"></span><span class="text-middle"><%= vorgposting.voppdate.strftime ("%B %-d, %Y") %></span></li>
                   </ul>
                 </div>
               </div>
@@ -70,12 +69,13 @@
                   <%= vorgposting.voppname %>
                   <% end %>
                   <ul class="list-inline offset-top-10">
-                    <li><span class="text-middle icon icon-xxs icon-primary mdi mdi-map-marker"></span><span class="text-middle">?</span></li>
-                    <li><span class="text-middle icon icon-xxs icon-primary mdi mdi-clock"></span><span class="text-middle">?</span></li>
-                    <li><span class="text-middle icon icon-xxs icon-primary mdi mdi-calendar"></span><span class="text-middle"><%= vorgposting.created_at %></span></li>
+                    <li><span class="text-middle icon icon-xxs icon-primary mdi mdi-map-marker"></span><span class="text-middle"><%= vorgposting.created_at.strftime ("%B %-d, %Y") %></span></li>
+                    <li><span class="text-middle icon icon-xxs icon-primary mdi mdi-clock"></span><span class="text-middle"><%= vorgposting.deadlinedate.strftime ("%B %-d, %Y") %></span></li>
+                    <li><span class="text-middle icon icon-xxs icon-primary mdi mdi-calendar"></span><span class="text-middle"><%= vorgposting.voppdate.strftime ("%B %-d, %Y") %></span></li>
                   </ul>
                 </div>
               </div>
+            </div>
             <% x = x + 1
                end
                end

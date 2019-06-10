@@ -3,17 +3,7 @@
           <div class="shell">
             <div class="range range-xs-center">
               <div class="cell-sm-7 cell-md-6">
-                <div class="img-thumbnail-custom"><img src="<%= image_path (@vhero.profile_pic) unless @vhero.profile_pic.blank? %>" alt="Profile Picture" width="569" height="656" class="img-responsive"/>
-                  <!--<div class="caption">
-                    <div class="group-lg">
-                      <ul class="list-inline text-middle">
-                        <li><a href="#" class="link-white icon icon-sm icon-circle fa-instagram"></a></li>
-                        <li><a href="#" class="link-white icon icon-xs icon-circle fa-facebook"></a></li>
-                        <li><a href="#" class="link-white icon icon-xs icon-circle fa-twitter"></a></li>
-                        <li><a href="#" class="link-white icon icon-xs icon-circle fa-google-plus"></a></li>
-                      </ul>
-                    </div>
-                  </div>-->
+                <div class="img-thumbnail-custom"><%= image_tag @vhero.image unless @vhero.image.nil?, class: "img-responsive", alt: "You NEED a Profile Picture", resize: "569x656" %>
                 </div>
               </div>
               <div class="cell-sm-7 cell-md-6 text-sm-left offset-sm-top-30 offset-md-top-0">

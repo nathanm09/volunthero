@@ -31,9 +31,11 @@
 	
 	<%# ----- Flash message header end----- %>
     </p>
+    <% if !current_vhero %>
     <div class="page text-right text-top">
         <span>I'm an Organization -> <%= link_to 'Log In', vorglogin_path %> | <%= link_to 'Sign Up', new_vorganization_path %></span>
     </div>
+    <% end %>
       
     <div class="page text-center">
       <!-- Page Header-->

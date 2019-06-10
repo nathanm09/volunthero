@@ -31,7 +31,7 @@ class VorganizationsController < ApplicationController
     
     respond_to do |format|
       if @vorganization.save
-        format.html { redirect_to @vorganization, notice: 'Vorganization was successfully created.' }
+        format.html { redirect_to vorglogin_path, notice: 'Your account was created successfully. Please log in.' }
         format.json { render :show, status: :created, location: @vorganization }
       else
         format.html { render :new }

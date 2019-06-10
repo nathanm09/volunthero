@@ -12,6 +12,9 @@ class VherosController < ApplicationController
   # GET /vheros/1.json
   def show
       @vhero = Vhero.find(params[:id])
+      if @vhero.image.nil?
+        @vhero.image = "mitchmaner.jpg"
+      end
   end
 
   # GET /vheros/new
@@ -32,7 +35,8 @@ class VherosController < ApplicationController
 
     respond_to do |format|
       if @vhero.save
-        format.html { redirect_to @vhero, notice: 'Vhero was successfully created.' }
+        @vhero.image.attach(params[:vhero][:image])
+        format.html { redirect_to vherologin_path, notice: 'Your profile was created successfully. Please log in.' }
         format.json { render :show, status: :created, location: @vhero }
       else
         format.html { render :new }

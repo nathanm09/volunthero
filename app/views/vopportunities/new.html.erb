@@ -16,26 +16,100 @@
               <div class="cell-sm-10 cell-md-8">
                 <div class="inset-lg-left-50 inset-lg-right-50">
                   <!-- RD Mailform-->       
-                <%= @vorganization = Vorganization.find(session[:vorgid]) %>
+                <% @vorganization = Vorganization.find(session[:vorgid]) %>
                 <%= form_with(model: [ @vorganization, @vorganization.vopportunities.build ], local: true) do |form| %>   
                     <div class="form-inline-flex">
                       <div class="form-group">
                         <%= form.text_field :voppname, autofocus: true, class: "form-control" %>
-                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :voppname %></label>
-                        </div>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :voppname, "Title" %></label>
+                      </div>
                     </div>
                     <br>
                     <div class="form-inline-flex">
                       <div class="form-group">
-                        <%= form.text_field :title, class: "form-control" %>
-                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :title %></label>
-                        </div>
+                        <%= form.date_field :voppdate, as: :datetime, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :voppdate, "Opportunity Date" %></label>
+                      </div> 
+                      <div class="form-group">
+                        <%= form.date_field :deadlinedate, as: :datetime, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :deadlinedate, "Deadline Date" %></label>
+                      </div>
                     </div>
                     <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <%= form.number_field :vopphours, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :vopphours, "Hour Commitment" %></label>
+                       </div>
+                       <div class="form-group">
+                        <%= form.number_field :positionsavailable, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :positionsavailable, "Positions Available" %></label>
+                       </div>
+                    </div>   
+                    <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <%= form.text_field :voppaddress, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :voppaddress, "Address" %></label>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <%= form.text_field :voppcity, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :voppcity, "City" %></label>
+                        </div> 
+                      <div class="form-group">
+                        <%= form.select :vopparea, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :vopparea, "Province" %></label>
+                       </div>
+                       <div class="form-group">
+                        <%= form.text_field :voppcountry, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :voppcountry, "Country" %></label>
+                       </div>
+                    </div>  
+                    <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <%= form.text_field :voppbanner, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :voppbanner, "Banner Image" %></label>
+                      </div>
+                    </div>
                     <div class="form-inline-flex">
                       <div class="form-group">
                         <%= form.text_field :vopplogo, class: "form-control" %>
-                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :vorglogo %></label>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :vorglogo, "Logo" %></label>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <%= form.text_field :website, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :website, "Website" %></label>
+                       </div>
+                       <div class="form-group">
+                        <%= form.text_field :responsibilities, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :responsibilities, "Responsibilities" %></label>
+                       </div>
+                    </div>   
+                    <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group">
+                        <%= form.text_field :jobfunction, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :jobfunction, "Job Function" %></label>
+                       </div>
+                       <div class="form-group">
+                        <%= form.text_field :industry, class: "form-control" %>
+                        <label for="contact-name-2" class="form-label form-label-outside"><%= form.label :industry, "Industry" %></label>
+                       </div>
+                    </div>   
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="form-inline-flex">
+                      <div class="form-group offset-top-15">
+                        <%= form.text_area :shortdescr, class: "form-control"%> 
+                        <label for="message" class="form-label form-label-outside"> <%= form.label :shortdescr, "Opportunity Description" %></label>
                       </div>
                     </div>
                     <br>
@@ -43,8 +117,8 @@
                     <br>
                     <div class="form-inline-flex">
                       <div class="form-group offset-top-15">
-                        <%= form.text_area :shortdescr, class: "form-control" %> 
-                        <label for="message" class="form-label form-label-outside"> <%= form.label :shortdescr %></label>
+                        <%= form.text_area :vherodescription, class: "form-control" %> 
+                        <label for="message" class="form-label form-label-outside"> <%= form.label :vherodescription, "Hero Description" %></label>
                       </div>
                     </div>
                     <br>
